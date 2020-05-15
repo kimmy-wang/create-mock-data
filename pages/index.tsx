@@ -2,10 +2,9 @@ import {
   Form,
   Select,
   InputNumber,
-  DatePicker,
-  Switch,
-  Slider,
+  Table,
   Button,
+  Space
 } from 'antd'
 
 import MainLayout from '../layouts/main'
@@ -13,50 +12,87 @@ import MainLayout from '../layouts/main'
 const FormItem = Form.Item
 const Option = Select.Option
 
+const columns = [
+  {
+    title: 'Key',
+    dataIndex: 'key',
+    key: 'key',
+    render: text => <a>{text}</a>,
+  },
+  {
+    title: 'Type',
+    dataIndex: 'type',
+    key: 'type',
+  },
+  {
+    title: 'Value',
+    dataIndex: 'value',
+    key: 'value',
+  },
+  {
+    title: 'Action',
+    key: 'action',
+    render: (text, record) => (
+      <Space size="middle">
+        <a>Invite {record.name}</a>
+        <a>Delete</a>
+      </Space>
+    ),
+  },
+];
+
+const data = [
+  {
+    key: '1',
+    type: 'John Brown',
+    value: 32,
+    tags: ['nice', 'developer'],
+  },
+  {
+    key: '2',
+    type: 'Jim Green',
+    value: 42,
+    tags: ['loser'],
+  },
+  {
+    key: '3',
+    type: 'Joe Black',
+    value: 32,
+    tags: ['cool', 'teacher'],
+  },
+];
+
 export default () => (
   <MainLayout>
     <Form layout="horizontal">
       <FormItem
-        label="Input Number"
-        labelCol={{ span: 8 }}
-        wrapperCol={{ span: 8 }}
+        label="生成数量"
+        labelCol={{ span: 6 }}
+        wrapperCol={{ span: 12 }}
       >
         <InputNumber
           size="large"
           min={1}
-          max={10}
-          style={{ width: 100 }}
+          style={{ width: 150 }}
           defaultValue={3}
           name="inputNumber"
         />
-        <a href="#">Link</a>
       </FormItem>
 
-      <FormItem label="Switch" labelCol={{ span: 8 }} wrapperCol={{ span: 8 }}>
-        <Switch defaultChecked />
-      </FormItem>
-
-      <FormItem label="Slider" labelCol={{ span: 8 }} wrapperCol={{ span: 8 }}>
-        <Slider defaultValue={70} />
-      </FormItem>
-
-      <FormItem label="Select" labelCol={{ span: 8 }} wrapperCol={{ span: 8 }}>
-        <Select size="large" defaultValue="lucy" style={{ width: 192 }}>
-          <Option value="jack">jack</Option>
-          <Option value="lucy">lucy</Option>
-          <Option value="disabled" disabled>
-            disabled
-          </Option>
-          <Option value="yiminghe">yiminghe</Option>
+      <FormItem label="生成类型" labelCol={{ span: 6 }} wrapperCol={{ span: 12 }}>
+        <Select mode="multiple" size="large" defaultValue="json" style={{ width: 200 }}>
+          <Option value="json">json</Option>
+          <Option value="yaml">yaml</Option>
+          <Option value="toml">toml</Option>
         </Select>
       </FormItem>
 
       <FormItem
-        label="DatePicker"
-        labelCol={{ span: 8 }}
-        wrapperCol={{ span: 8 }}
+        label="数据模板"
+        labelCol={{ span: 6 }}
+        wrapperCol={{ span: 12 }}
       >
-        <DatePicker name="startDate" />
+        <Table columns={columns} dataSource={data} />
       </FormItem>
       <FormItem style={{ marginTop: 48 }} wrapperCol={{ span: 8, offset: 8 }}>
         <Button size="large" type="primary" htmlType="submit">
