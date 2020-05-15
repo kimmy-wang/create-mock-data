@@ -1,3 +1,4 @@
+import {withTranslation} from '../i18n'
 import {
   Form,
   Select,
@@ -62,7 +63,7 @@ const data = [
   },
 ];
 
-export default () => (
+const Index = ({t}) => (
   <MainLayout>
     <Form layout="horizontal">
       <FormItem
@@ -105,3 +106,9 @@ export default () => (
     </Form>
   </MainLayout>
 )
+
+Index.getInitialProps = async () => ({
+  namespacesRequired: ['common', 'footer'],
+})
+
+export default withTranslation('common')(Index)
