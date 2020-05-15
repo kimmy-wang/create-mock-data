@@ -1,5 +1,5 @@
 import {withTranslation} from '../i18n'
-import {Layout} from 'antd';
+import {Layout, Avatar} from 'antd';
 
 const {Header, Content, Footer} = Layout;
 
@@ -11,7 +11,7 @@ const HeaderRender = withTranslation('common')(({t}) => (
     textAlign: 'center',
     backgroundColor: '#e3f9fd'
   }}>
-    {t('title')}
+    <span><Avatar src='https://cdn.upcwangying.com/logo/mock-data.png'/></span> {t('title')}
   </Header>
 ))
 
@@ -27,10 +27,6 @@ const FooterRender = withTranslation('footer')(({t}) => (
 const MainLayout = ({children, t}) => (
   <Layout
     style={{minHeight: '100vh'}}
-    title={t('title')}
-    logo='https://cdn.upcwangying.com/logo/mock-data.png'
-    // layout='topmenu'
-    fixedHeader
   >
     <HeaderRender />
     <Content style={{
