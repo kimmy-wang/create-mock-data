@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "create-mock-data",
   "private": true,
+  "main": "./dist/index.js",
   "scripts": {
-    "dev": "next",
+    "dev": "node index.js",
     "build": "next build",
-    "start": "next start"
+    "start": "NODE_ENV=production node index.js"
   },
   "dependencies": {
     "@ant-design/icons": "4.1.0",
@@ -15,13 +16,17 @@
     "antd": "^4.2.0",
     "babel-plugin-import": "^1.13.0",
     "esm": "3.2.25",
+    "express": "^4.17.1",
+    "i18next": "^19.4.4",
     "js-yaml": "^3.13.1",
     "less": "3.11.1",
     "less-vars-to-js": "1.3.0",
     "next": "latest",
+    "next-i18next": "^4.4.2",
     "null-loader": "4.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-i18next": "^11.4.0",
     "toml": "^3.0.0",
     "webpack-filter-warnings-plugin": "1.2.1"
   },
@@ -35,10 +40,5 @@
     "url": "https://github.com/upcwangying/create-mock-data/issues/new"
   },
   "license": "MIT",
-  "devDependencies": {
-    "@types/js-yaml": "^3.12.3",
-    "@types/node": "13.13.4",
-    "@types/react": "^16.9.35",
-    "typescript": "3.8.3"
-  }
+  "devDependencies": {}
 }
