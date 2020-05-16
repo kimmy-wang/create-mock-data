@@ -1,5 +1,4 @@
 import {Layout, Avatar, Button} from 'antd';
-import {RedoOutlined} from '@ant-design/icons';
 
 import {i18n, useTranslation} from '../i18n'
 
@@ -24,7 +23,7 @@ const Head = () => {
         flexDirection: 'row'}}>
         <div><Avatar src='https://cdn.upcwangying.com/logo/mock-data.png'/></div> {t('title')}
       </div>
-      <Button type="primary" shape="round" icon={<RedoOutlined/>} size='small'
+      <Button type="primary" shape="circle" size='small'
               onClick={() => i18n.changeLanguage(i18n.language === 'en' ? 'zh' : 'en')}><span style={{width: '20px'}}>{i18n.language === 'en' ? 'zh' : 'en'}</span></Button>
     </Header>
   )
