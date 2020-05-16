@@ -11,6 +11,7 @@ const themeVariables = lessToJS(
 
 module.exports = withLess({
   target: 'serverless',
+  poweredByHeader: false,
   lessLoaderOptions: {
     javascriptEnabled: true,
     modifyVars: themeVariables, // make your antd custom effective
