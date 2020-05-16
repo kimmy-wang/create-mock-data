@@ -63,8 +63,9 @@ const data = [
   },
 ];
 
-const Home = () => {
+const Home = ({count, types}) => {
   const { t } = useTranslation(['common', 'footer']);
+
   return (
     <MainLayout>
       <Form layout="horizontal">
@@ -77,16 +78,14 @@ const Home = () => {
             size="large"
             min={1}
             style={{ width: 150 }}
-            defaultValue={3}
+            defaultValue={count}
             name="inputNumber"
           />
         </FormItem>
 
         <FormItem label="生成类型" labelCol={{ span: 6 }} wrapperCol={{ span: 12 }}>
           <Select mode="multiple" size="large" defaultValue="json" style={{ width: 200 }}>
-            <Option value="json">json</Option>
-            <Option value="yaml">yaml</Option>
-            <Option value="toml">toml</Option>
+            {types.map((type, i) => <Option value={type}>{type}</Option>)}
           </Select>
         </FormItem>
 
@@ -108,6 +107,12 @@ const Home = () => {
       </Form>
     </MainLayout>
   )
+}
+
+Home.getInitialProps = async ctx => {
+  const res = await fetch('https://api.upcwangying.com/create-mock-data/index.json')
+  const json = await res.json()
+  return {...json}
 }
 
 export default Home
