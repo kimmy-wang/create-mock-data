@@ -1,4 +1,4 @@
-import {withTranslation} from '../i18n'
+import {useTranslation} from '../i18n'
 import {
   Form,
   Select,
@@ -63,52 +63,51 @@ const data = [
   },
 ];
 
-const Index = ({t}) => (
-  <MainLayout>
-    <Form layout="horizontal">
-      <FormItem
-        label="生成数量"
-        labelCol={{ span: 6 }}
-        wrapperCol={{ span: 12 }}
-      >
-        <InputNumber
-          size="large"
-          min={1}
-          style={{ width: 150 }}
-          defaultValue={3}
-          name="inputNumber"
-        />
-      </FormItem>
+const Home = () => {
+  const { t } = useTranslation(['common', 'footer']);
+  return (
+    <MainLayout>
+      <Form layout="horizontal">
+        <FormItem
+          label="生成数量"
+          labelCol={{ span: 6 }}
+          wrapperCol={{ span: 12 }}
+        >
+          <InputNumber
+            size="large"
+            min={1}
+            style={{ width: 150 }}
+            defaultValue={3}
+            name="inputNumber"
+          />
+        </FormItem>
 
-      <FormItem label="生成类型" labelCol={{ span: 6 }} wrapperCol={{ span: 12 }}>
-        <Select mode="multiple" size="large" defaultValue="json" style={{ width: 200 }}>
-          <Option value="json">json</Option>
-          <Option value="yaml">yaml</Option>
-          <Option value="toml">toml</Option>
-        </Select>
-      </FormItem>
+        <FormItem label="生成类型" labelCol={{ span: 6 }} wrapperCol={{ span: 12 }}>
+          <Select mode="multiple" size="large" defaultValue="json" style={{ width: 200 }}>
+            <Option value="json">json</Option>
+            <Option value="yaml">yaml</Option>
+            <Option value="toml">toml</Option>
+          </Select>
+        </FormItem>
 
-      <FormItem
-        label="数据模板"
-        labelCol={{ span: 6 }}
-        wrapperCol={{ span: 12 }}
-      >
-        <Table columns={columns} dataSource={data} />
-      </FormItem>
-      <FormItem style={{ marginTop: 48 }} wrapperCol={{ span: 8, offset: 8 }}>
-        <Button size="large" type="primary" htmlType="submit">
-          OK
-        </Button>
-        <Button size="large" style={{ marginLeft: 8 }}>
-          Cancel
-        </Button>
-      </FormItem>
-    </Form>
-  </MainLayout>
-)
+        <FormItem
+          label="数据模板"
+          labelCol={{ span: 6 }}
+          wrapperCol={{ span: 12 }}
+        >
+          <Table columns={columns} dataSource={data} />
+        </FormItem>
+        <FormItem style={{ marginTop: 48 }} wrapperCol={{ span: 8, offset: 8 }}>
+          <Button size="large" type="primary" htmlType="submit">
+            OK
+          </Button>
+          <Button size="large" style={{ marginLeft: 8 }}>
+            Cancel
+          </Button>
+        </FormItem>
+      </Form>
+    </MainLayout>
+  )
+}
 
-Index.getInitialProps = async () => ({
-  namespacesRequired: ['common', 'footer'],
-})
-
-export default withTranslation('common')(Index)
+export default Home

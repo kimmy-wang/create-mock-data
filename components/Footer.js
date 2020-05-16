@@ -1,15 +1,19 @@
-import {withTranslation} from '../i18n'
+import {useTranslation} from '../i18n'
 import {Layout} from 'antd';
 
 const {Footer} = Layout;
 
-const Foot = ({t}) => (
-  <Footer style={{
-    textAlign: 'center',
-    backgroundColor: '#fcefe8'
-  }}>
-    {t('copyright')}
-  </Footer>
-)
+const Foot = () => {
+  const { t } = useTranslation(['footer']);
+  return (
+    <Footer style={{
+      textAlign: 'center',
+      backgroundColor: '#fcefe8'
+    }}>
+      {t('copyright')}
+    </Footer>
+  )
+}
 
-export default withTranslation('footer')(Foot)
+
+export default Foot

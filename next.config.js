@@ -10,16 +10,14 @@ const themeVariables = lessToJS(
 )
 
 module.exports = withLess({
-  publicRuntimeConfig: {
-    localeSubpaths: typeof process.env.LOCALE_SUBPATHS === 'string'
-      ? process.env.LOCALE_SUBPATHS
-      : 'none',
-  },
+  target: 'serverless',
   lessLoaderOptions: {
     javascriptEnabled: true,
     modifyVars: themeVariables, // make your antd custom effective
   },
-  webpack: (config, { isServer }) => {
+  webpack: (config, {isServer}) => {
+    config.mode = 'production';
+
     if (isServer) {
       const antStyles = /antd\/.*?\/style.*?/
       const origExternals = [...config.externals]
@@ -39,6 +37,11 @@ module.exports = withLess({
         test: antStyles,
         use: 'null-loader',
       })
+    } else {
+      // Fixes npm packages that depend on `fs` module
+      config.node = {
+        fs: 'empty'
+      };
     }
     return config
   },
