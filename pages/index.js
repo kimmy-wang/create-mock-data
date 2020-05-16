@@ -64,13 +64,13 @@ const data = [
 ];
 
 const Home = ({count, types}) => {
-  const { t } = useTranslation(['common', 'footer']);
+  const { t } = useTranslation(['home']);
 
   return (
     <MainLayout>
       <Form layout="horizontal">
         <FormItem
-          label="生成数量"
+          label={t('numbers')}
           labelCol={{ span: 6 }}
           wrapperCol={{ span: 12 }}
         >
@@ -83,14 +83,14 @@ const Home = ({count, types}) => {
           />
         </FormItem>
 
-        <FormItem label="生成类型" labelCol={{ span: 6 }} wrapperCol={{ span: 12 }}>
+        <FormItem label={t('types')} labelCol={{ span: 6 }} wrapperCol={{ span: 12 }}>
           <Select mode="multiple" size="large" defaultValue="json" style={{ width: 200 }}>
             {types.map((type, i) => <Option value={type}>{type}</Option>)}
           </Select>
         </FormItem>
 
         <FormItem
-          label="数据模板"
+          label={t('template')}
           labelCol={{ span: 6 }}
           wrapperCol={{ span: 12 }}
         >
@@ -110,7 +110,12 @@ const Home = ({count, types}) => {
 }
 
 Home.getInitialProps = async ctx => {
-  const res = await fetch('https://api.upcwangying.com/create-mock-data/index.json')
+  const res = await fetch('https://api.upcwangying.com/create-mock-data/index.json', {
+    method: 'GET',
+    mode: 'no-cors',
+    cache: 'no-cache',
+    referrerPolicy: 'no-referrer',
+  })
   const json = await res.json()
   return {...json}
 }

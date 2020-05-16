@@ -24,7 +24,7 @@ const Head = () => {
         <div><Avatar src='https://cdn.upcwangying.com/logo/mock-data.png'/></div> {t('title')}
       </div>
       <Button type="primary" shape="circle" size='small'
-              onClick={() => i18n.changeLanguage(i18n.language === 'en' ? 'zh' : 'en')}><span style={{width: '20px'}}>{i18n.language === 'en' ? 'zh' : 'en'}</span></Button>
+              onClick={() => i18n.changeLanguage(i18n.language === 'en' ? 'zh' : 'en')}><span style={{width: '20px'}}>{i18n.language === 'en' ? '中' : 'en'}</span></Button>
     </Header>
   )
 }
