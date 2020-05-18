@@ -7,11 +7,17 @@ const Error = ({ statusCode }) => {
   const { t } = useTranslation('common');
 
   return (
-    <p>
-      {statusCode
-        ? t('error-with-status', { statusCode })
-        : t('error-without-status')}
-    </p>
+    <div style={{
+      display:'flex',
+      justifyContent: 'center',
+      alignItems: 'center'
+    }}>
+      <h1 style={{color: '#f00056'}}>
+        {statusCode
+          ? t('error-with-status', { statusCode })
+          : t('error-without-status')}
+      </h1>
+    </div>
   );
 };
 
