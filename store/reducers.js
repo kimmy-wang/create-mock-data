@@ -1,6 +1,6 @@
 import * as actionTypes from './action-types'
 
-const initialState = {
+export const initialState = {
   darkMode: false,
 }
 

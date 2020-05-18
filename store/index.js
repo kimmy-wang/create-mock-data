@@ -13,9 +13,10 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, reducer)
 
-export function initializeStore() {
+export function initializeStore(initialState) {
   return createStore(
     persistedReducer,
+    initialState,
     bindMiddleware([thunkMiddleware])
   )
 }
