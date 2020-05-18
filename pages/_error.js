@@ -10,7 +10,8 @@ const Error = ({ statusCode }) => {
     <div style={{
       display:'flex',
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
+      height: '100vh',
     }}>
       <h1 style={{color: '#f00056'}}>
         {statusCode
